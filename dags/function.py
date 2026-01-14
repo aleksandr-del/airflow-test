@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from pathlib import Path
 from typing import Any
 
 
@@ -40,3 +41,9 @@ def get_even_or_odd_day(**context: dict[str, Any]) -> str:
 def get_even(**context: dict[str, Any]) -> bool:
     dt = context["logical_date"]
     return dt.day % 2 == 0
+
+
+def sensor_file(filename: str) -> bool:
+    cwd = Path(".")
+    file_to_sensor = cwd / filename
+    return file_to_sensor.exists()
