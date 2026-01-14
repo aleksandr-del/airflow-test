@@ -20,6 +20,9 @@ airflow-test/
 │   ├── http_dag.py            # HTTP API integration
 │   ├── dag_xcom.py            # XCom push/pull operations
 │   ├── dag_branch.py          # Conditional branching
+│   ├── dynamic_dag.py         # Dynamic task generation
+│   ├── http_sensor_dag.py     # HTTP sensor polling
+│   ├── python_sensor_dag.py   # Python sensor file checking
 │   ├── customoperator.py      # Custom DuckDB operator
 │   ├── function.py            # Utility functions
 │   └── query.sql              # Templated SQL query
@@ -103,6 +106,24 @@ airflow scheduler
 - **Features**: Dynamic workflow paths based on date logic
 - **Schedule**: Daily (`0 0 * * *`)
 
+### Dynamic Task Generation
+
+- **File**: `dynamic_dag.py`
+- **Features**: Programmatically create tasks based on date ranges
+- **Schedule**: `@once`
+
+### HTTP Sensor
+
+- **File**: `http_sensor_dag.py`
+- **Features**: Poll API endpoint until condition met, response validation
+- **Schedule**: `@once`
+
+### Python Sensor
+
+- **File**: `python_sensor_dag.py`
+- **Features**: File existence checking, custom Python callable sensor
+- **Schedule**: `@once`
+
 ## Key Learning Concepts
 
 1. **DAG Definition**: Proper DAG structure with default arguments
@@ -112,6 +133,8 @@ airflow scheduler
 5. **Context Variables**: Accessing execution metadata
 6. **Connection Management**: External service integration
 7. **Error Handling**: Retry logic and failure scenarios
+8. **Sensors**: Polling mechanisms for external conditions (HTTP, file system)
+9. **Dynamic Tasks**: Programmatic task generation based on runtime data
 
 ## Access
 
@@ -134,3 +157,5 @@ Each DAG includes relevant tags for easy filtering:
 - `get`, `http` - API operations
 - `push`, `pull`, `xcom` - Data communication
 - `branches` - Conditional workflows
+- `dynamic`, `tasks` - Dynamic task generation
+- `sensor`, `api`, `file`, `python` - Sensor operations
