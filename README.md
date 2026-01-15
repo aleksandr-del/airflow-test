@@ -47,8 +47,8 @@ pip install "apache-airflow==2.10.0" --constraint "https://raw.githubusercontent
 
 ```bash
 python3.11 -m venv --prompt airflow .venv
-echo "AIRFLOW_HOME='/path/to/airflow-test'" >> .venv/bin/activate
-echo "AIRFLOW__CORE__LOAD_EXAMPLES=False" >> .venv/bin/activate
+echo "export AIRFLOW_HOME='/path/to/airflow-test'" >> .venv/bin/activate
+echo "export AIRFLOW__CORE__LOAD_EXAMPLES=False" >> .venv/bin/activate
 source .venv/bin/activate
 ```
 
@@ -56,6 +56,12 @@ source .venv/bin/activate
 
 ```bash
 airflow db init
+```
+
+or
+
+```bash
+airflow dbt migrate
 ```
 
 ### 5. Create Admin User
