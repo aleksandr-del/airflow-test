@@ -23,9 +23,13 @@ airflow-test/
 │   ├── dynamic_dag.py         # Dynamic task generation
 │   ├── http_sensor_dag.py     # HTTP sensor polling
 │   ├── python_sensor_dag.py   # Python sensor file checking
-│   ├── customoperator.py      # Custom DuckDB operator
+│   ├── telegram_alerts_dag.py # Telegram failure notifications
 │   ├── function.py            # Utility functions
 │   └── query.sql              # Templated SQL query
+├── plugins/
+│   └── airflow_duckdb_plugins/
+│       └── operators/
+│           └── customoperator.py  # Custom DuckDB operator
 ```
 
 ## Setup Instructions
@@ -129,6 +133,13 @@ airflow scheduler
 - **File**: `python_sensor_dag.py`
 - **Features**: File existence checking, custom Python callable sensor
 - **Schedule**: `@once`
+
+### Telegram Alerts
+
+- **File**: `telegram_alerts_dag.py`
+- **Features**: Failure callback notifications, Telegram integration, intentional failures on even days
+- **Schedule**: Daily (`15 3 * * *`)
+- **Catchup**: Enabled
 
 ## Key Learning Concepts
 
