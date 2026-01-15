@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
-from customoperator import DuckDBCustomOperator
+from airflow_duckdb_plugins.operators.customoperator import DuckDBCustomOperator
 
 default_args = {"owner": "avdel", "retries": 1, "retry_delays": timedelta(seconds=5)}
 
